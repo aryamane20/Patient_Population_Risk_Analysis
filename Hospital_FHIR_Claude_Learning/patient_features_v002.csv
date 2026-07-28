@@ -1,0 +1,16 @@
+patient_token,age,age_over_65,age_over_80,gender_female,gender_male,state,num_active_conditions,num_total_conditions,high_comorbidity_burden,has_diabetes,has_heart_failure,has_copd,has_ckd,has_hypertension,has_coronary_artery_disease,has_atrial_fibrillation,has_depression,has_cancer,has_stroke,hba1c_value,hba1c_abnormal,hba1c_poor_control,creatinine_value,creatinine_abnormal,sodium_value,sodium_low,hemoglobin_value,anemia_flag,systolic_bp,hypertensive_urgency,bmi,obese,num_active_medications,polypharmacy,total_encounters_ever,num_inpatient_encounters,num_ed_encounters,high_utilizer,avg_length_of_stay,long_stay_history,uncontrolled_diabetes,heart_failure_with_anemia,num_abnormal_labs,risk_score,risk_tier
+b31eba0a89b092be,76,1,0,1,0,,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,0.9,,,,13.8,,,,,,4,0,0,0,0,0,,,,,0,5,LOW
+df504dcffec1020b,82,1,1,0,1,,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,55.0,1.0,0,0,9,0,0,0,,,,,0,15,LOW
+9d91efb127187b08,57,0,0,0,1,,0,3,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,2,0,0,0,0,0,,,,,0,0,LOW
+7b7e60c605f749cb,49,0,0,1,0,,11,11,1,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,190.0,1.0,,,1,0,32,21,0,1,,,,,0,40,MEDIUM
+fa511262999dd199,61,0,0,1,0,,0,1,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,0,0,0,0,0,0,,,,,0,0,LOW
+d4d7feaed6f78c4f,38,0,0,1,0,,0,1,0,0,0,1,0,0,0,0,0,0,0,,,,,,,,,,,,,,2,0,0,0,0,0,,,,,0,10,LOW
+7791f88aa2420741,78,1,0,1,0,,11,11,1,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,0,0,10,0,0,0,,,,,0,15,LOW
+fb1bd21aa0730aeb,47,0,0,0,1,,5,5,1,1,0,0,0,1,0,0,0,0,0,,,,,,,,,,118.0,0.0,,,4,0,1,0,0,0,,,,,0,10,LOW
+88a4b8f93fab21bd,31,0,0,1,0,,2,2,0,0,1,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,0,0,1,1,0,0,3.0,0.0,,,0,30,LOW
+bb6c2063d25e2da2,52,0,0,1,0,,3,3,1,0,1,0,0,0,0,1,0,0,1,,,,,,,,,,,,,,0,0,2,2,0,0,28.0,1.0,,,0,55,MEDIUM
+e8eb896d635eda99,51,0,0,0,1,Vic,0,1,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,0,0,2,0,0,0,,,,,0,0,LOW
+22b7f95c20361883,7,0,0,1,0,,1,1,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,0,0,0,0,0,0,,,,,0,0,LOW
+2dcd61cf4cbc6f92,71,1,0,0,1,,0,0,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,0,0,1,0,0,0,,,,,0,5,LOW
+05777d3766b5c08d,17,0,0,1,0,,2,2,0,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,0,0,0,0,0,0,,,,,0,0,LOW
+eb804058a0df5f63,0,0,0,1,0,,2,2,0,1,0,0,0,1,0,0,0,0,0,,,,,,,,,,,,,,0,0,0,0,0,0,,,,,0,0,LOW
