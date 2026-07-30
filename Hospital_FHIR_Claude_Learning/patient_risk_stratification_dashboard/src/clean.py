@@ -1,5 +1,5 @@
 """
-clean.py — turn the raw Diabetes-130 table into a clean, analysis-ready frame.
+clean.py - turn the raw Diabetes-130 table into a clean, analysis-ready frame.
 
 Each step is a small pure function so it can be unit-tested and reordered.
 `clean()` runs them in the right order and returns the cleaned DataFrame plus a
@@ -32,18 +32,18 @@ def _age_bucket_to_midpoint(value: str):
 
 
 def replace_missing_token(df: pd.DataFrame) -> pd.DataFrame:
-    """Step 1 — '?' (and empty strings) -> NaN."""
+    """Step 1 - '?' (and empty strings) -> NaN."""
     return df.replace({config.MISSING_TOKEN: np.nan, "": np.nan})
 
 
 def drop_sparse_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Step 2 — drop columns that are near-empty or leakage-prone."""
+    """Step 2 - drop columns that are near-empty or leakage-prone."""
     cols = [c for c in config.DROP_COLUMNS if c in df.columns]
     return df.drop(columns=cols)
 
 
 def exclude_expired_hospice(df: pd.DataFrame) -> pd.DataFrame:
-    """Step 3 — remove encounters the patient could not survive to be readmitted from."""
+    """Step 3 - remove encounters the patient could not survive to be readmitted from."""
     if "discharge_disposition_id" not in df.columns:
         return df
     mask = ~df["discharge_disposition_id"].isin(config.EXPIRED_HOSPICE_DISPOSITIONS)
@@ -51,7 +51,7 @@ def exclude_expired_hospice(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def deduplicate_patients(df: pd.DataFrame) -> pd.DataFrame:
-    """Step 4 — keep the first encounter per patient (chronological by encounter_id)."""
+    """Step 4 - keep the first encounter per patient (chronological by encounter_id)."""
     if config.PATIENT_ID_COL not in df.columns:
         return df
     ordered = df.sort_values(config.ENCOUNTER_ID_COL)
@@ -59,7 +59,7 @@ def deduplicate_patients(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def cap_outliers(df: pd.DataFrame, quantile: float = config.OUTLIER_UPPER_QUANTILE) -> pd.DataFrame:
-    """Step 5 — cap the upper tail of skewed count columns at the given quantile."""
+    """Step 5 - cap the upper tail of skewed count columns at the given quantile."""
     df = df.copy()
     for col in config.OUTLIER_CAP_COLS:
         if col in df.columns:
@@ -69,7 +69,7 @@ def cap_outliers(df: pd.DataFrame, quantile: float = config.OUTLIER_UPPER_QUANTI
 
 
 def standardize_fields(df: pd.DataFrame) -> pd.DataFrame:
-    """Step 6 — age bucket -> midpoint; change/diabetesMed -> 0/1."""
+    """Step 6 - age bucket -> midpoint; change/diabetesMed -> 0/1."""
     df = df.copy()
     if "age" in df.columns:
         df["age_midpoint"] = df["age"].map(_age_bucket_to_midpoint)
@@ -81,7 +81,7 @@ def standardize_fields(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_target(df: pd.DataFrame) -> pd.DataFrame:
-    """Step 7 — binary target: 1 if readmitted within 30 days, else 0."""
+    """Step 7 - binary target: 1 if readmitted within 30 days, else 0."""
     df = df.copy()
     df[config.TARGET_COL] = (df[config.RAW_TARGET_COL] == "<30").astype(int)
     return df
@@ -124,6 +124,7 @@ if __name__ == "__main__":
     from .ingest import load_raw
     raw = load_raw()
     clean_df, stats = clean(raw)
-    out = config.DATA_PROCESSED / "cleaned.parquet"
-    clean_df.to_parquet(out, index=False)
+    # CSV (not Parquet) per plan decision #4 - avoids a pyarrow dependency.
+    out = config.DATA_PROCESSED / "cleaned.csv"
+    clean_df.to_csv(out, index=False)
     print(f"\nSaved cleaned data -> {out}")

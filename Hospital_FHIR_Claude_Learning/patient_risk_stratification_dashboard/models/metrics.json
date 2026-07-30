@@ -1,0 +1,40 @@
+{
+  "n_rows": 69990,
+  "n_features": 26,
+  "positive_rate": 0.0898,
+  "scale_pos_weight": 10.136,
+  "gbm_backend": "xgboost",
+  "models": {
+    "logreg": {
+      "auroc": 0.6401,
+      "pr_auc": 0.1501,
+      "brier": 0.2323,
+      "precision": 0.133,
+      "recall": 0.5267,
+      "f1": 0.2124,
+      "threshold": 0.5,
+      "confusion_matrix": {
+        "tn": 8426,
+        "fp": 4315,
+        "fn": 595,
+        "tp": 662
+      }
+    },
+    "gbm": {
+      "auroc": 0.6476,
+      "pr_auc": 0.1572,
+      "brier": 0.2152,
+      "precision": 0.1384,
+      "recall": 0.5314,
+      "f1": 0.2197,
+      "threshold": 0.5,
+      "confusion_matrix": {
+        "tn": 8584,
+        "fp": 4157,
+        "fn": 589,
+        "tp": 668
+      }
+    }
+  },
+  "champion": "gbm"
+}

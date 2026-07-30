@@ -1,9 +1,9 @@
 """
-ingest.py — the data-source abstraction layer.
+ingest.py - the data-source abstraction layer.
 
 WHY THIS EXISTS (production-readiness):
 The model and everything downstream depend only on the `DataSource.load()`
-contract — a DataFrame with the raw Diabetes-130 columns. Today that's a CSV;
+contract - a DataFrame with the raw Diabetes-130 columns. Today that's a CSV;
 in production it's a live FHIR/Epic feed. Swapping sources means writing one
 new class, not touching the model. That is the whole point of this file.
 
@@ -90,7 +90,7 @@ class CSVSource:
 
 class FHIRSource:
     """
-    PRODUCTION stub — reuse the Day-14 FHIR pipeline (root pipeline_functions.py).
+    PRODUCTION stub - reuse the Day-14 FHIR pipeline (root pipeline_functions.py).
 
     In production this would:
       1. Pull Patient / Condition / Encounter / Observation from a FHIR endpoint

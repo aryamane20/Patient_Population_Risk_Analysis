@@ -1,5 +1,5 @@
 """
-config.py — single source of truth for paths, constants, and column groups.
+config.py - single source of truth for paths, constants, and column groups.
 
 Keeping these here (not scattered across modules) is what makes the pipeline
 reproducible and easy to point at a different environment or data source.
@@ -54,7 +54,7 @@ ENCOUNTER_ID_COL = "encounter_id"
 # Cleaning constants
 # ─────────────────────────────────────────────
 MISSING_TOKEN = "?"
-# discharge_disposition_id codes for expired / hospice — such patients
+# discharge_disposition_id codes for expired / hospice - such patients
 # cannot be readmitted, so including them leaks/poisons the target.
 EXPIRED_HOSPICE_DISPOSITIONS = {11, 13, 14, 19, 20, 21}
 # columns dropped outright (near-empty or leakage-prone identifiers)
@@ -91,3 +91,12 @@ OUTLIER_CAP_COLS = [
 # ─────────────────────────────────────────────
 TIER_LABELS = ["Low", "Medium", "High"]
 TIER_QUANTILES = [0.0, 0.50, 0.80, 1.0]   # Low <P50, Medium P50-P80, High >=P80
+
+# ─────────────────────────────────────────────
+# Care-coordinator outreach workflow
+# ─────────────────────────────────────────────
+# Operational contact history (who was called, when). Lives at the project root
+# so it survives pipeline reruns that regenerate outputs/.
+CONTACT_LOG_PATH = PROJECT_ROOT / "contact_log.csv"
+# Default follow-up cadence per tier, in days (editable in the dashboard).
+DEFAULT_CADENCE_DAYS = {"High": 7, "Medium": 30, "Low": 90}

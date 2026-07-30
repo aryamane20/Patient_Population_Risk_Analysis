@@ -1,0 +1,140 @@
+{
+  "tables": {
+    "race": [
+      {
+        "attribute": "race",
+        "subgroup": "Caucasian",
+        "n": 52305,
+        "reliable": true,
+        "positive_rate": 0.0919,
+        "auroc": 0.6449,
+        "recall_tpr": 0.5546,
+        "fnr": 0.4454,
+        "selection_rate": 0.3595
+      },
+      {
+        "attribute": "race",
+        "subgroup": "AfricanAmerican",
+        "n": 12627,
+        "reliable": true,
+        "positive_rate": 0.0867,
+        "auroc": 0.6379,
+        "recall_tpr": 0.484,
+        "fnr": 0.516,
+        "selection_rate": 0.3084
+      },
+      {
+        "attribute": "race",
+        "subgroup": "Hispanic",
+        "n": 1501,
+        "reliable": true,
+        "positive_rate": 0.0813,
+        "auroc": 0.7116,
+        "recall_tpr": 0.5246,
+        "fnr": 0.4754,
+        "selection_rate": 0.2378
+      },
+      {
+        "attribute": "race",
+        "subgroup": "Other",
+        "n": 1150,
+        "reliable": true,
+        "positive_rate": 0.0687,
+        "auroc": 0.6217,
+        "recall_tpr": 0.3038,
+        "fnr": 0.6962,
+        "selection_rate": 0.1861
+      },
+      {
+        "attribute": "race",
+        "subgroup": "Asian",
+        "n": 488,
+        "reliable": true,
+        "positive_rate": 0.084,
+        "auroc": 0.7288,
+        "recall_tpr": 0.4634,
+        "fnr": 0.5366,
+        "selection_rate": 0.2336
+      }
+    ],
+    "gender": [
+      {
+        "attribute": "gender",
+        "subgroup": "Female",
+        "n": 37239,
+        "reliable": true,
+        "positive_rate": 0.0904,
+        "auroc": 0.6511,
+        "recall_tpr": 0.5501,
+        "fnr": 0.4499,
+        "selection_rate": 0.3511
+      },
+      {
+        "attribute": "gender",
+        "subgroup": "Male",
+        "n": 32748,
+        "reliable": true,
+        "positive_rate": 0.0892,
+        "auroc": 0.6397,
+        "recall_tpr": 0.5175,
+        "fnr": 0.4825,
+        "selection_rate": 0.3277
+      }
+    ],
+    "age_band": [
+      {
+        "attribute": "age_band",
+        "subgroup": "70+",
+        "n": 30622,
+        "reliable": true,
+        "positive_rate": 0.104,
+        "auroc": 0.6189,
+        "recall_tpr": 0.6325,
+        "fnr": 0.3675,
+        "selection_rate": 0.4708
+      },
+      {
+        "attribute": "age_band",
+        "subgroup": "50-69",
+        "n": 28040,
+        "reliable": true,
+        "positive_rate": 0.0818,
+        "auroc": 0.658,
+        "recall_tpr": 0.4645,
+        "fnr": 0.5355,
+        "selection_rate": 0.2667
+      },
+      {
+        "attribute": "age_band",
+        "subgroup": "<50",
+        "n": 11328,
+        "reliable": true,
+        "positive_rate": 0.0712,
+        "auroc": 0.651,
+        "recall_tpr": 0.3499,
+        "fnr": 0.6501,
+        "selection_rate": 0.1687
+      }
+    ]
+  },
+  "gaps": {
+    "race": {
+      "equal_opportunity_diff": 0.2508,
+      "demographic_parity_diff": 0.1734,
+      "worst_fnr_subgroup": "Other",
+      "worst_fnr": 0.6962
+    },
+    "gender": {
+      "equal_opportunity_diff": 0.0326,
+      "demographic_parity_diff": 0.0234,
+      "worst_fnr_subgroup": "Male",
+      "worst_fnr": 0.4825
+    },
+    "age_band": {
+      "equal_opportunity_diff": 0.2826,
+      "demographic_parity_diff": 0.3021,
+      "worst_fnr_subgroup": "<50",
+      "worst_fnr": 0.6501
+    }
+  }
+}

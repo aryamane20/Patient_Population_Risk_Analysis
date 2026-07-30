@@ -1,4 +1,4 @@
-# Patient Risk Stratification Dashboard — Day 25 pipeline
+# Patient Risk Stratification Dashboard - Day 25 pipeline
 # Pinned loosely; tested under anaconda Python 3.12 (/opt/anaconda3/bin/python3)
 pandas>=2.0
 numpy>=1.24
@@ -8,8 +8,12 @@ shap>=0.44
 matplotlib>=3.7
 joblib>=1.3
 requests>=2.28
+# Dashboard (Day 26) + Claude care plans (Day 27)
+streamlit>=1.40
+anthropic>=0.40
 # Notebook / docs
 jupyter
 nbformat
+ipykernel
 # Tests
 pytest>=7.0

@@ -1,7 +1,7 @@
 # Virtual environment
 .venv/
 
-# Data (downloaded / derived — do not commit; regenerate via src/ingest.py)
+# Data (downloaded / derived - do not commit; regenerate via src/ingest.py)
 data/raw/
 data/processed/
 
@@ -9,6 +9,10 @@ data/processed/
 models/*.joblib
 outputs/*.csv
 outputs/*.png
+outputs/tableau/
+
+# Care-coordinator operational state (local outreach history)
+contact_log.csv
 
 # Python
 __pycache__/
