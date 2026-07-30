@@ -18,7 +18,7 @@ projects, each a step up in complexity:
 
 | Project | Folder | Dataset | What it does |
 |---------|--------|---------|--------------|
-| **1. FHIR Data Pipeline** | `main.py`, `pipeline_functions.py` | HAPI FHIR Public Sandbox | Extracts patients from a live FHIR API, flattens the resources, engineers features, de-identifies, validates data quality, and applies a rules-based risk score. |
+| **1. FHIR Data Pipeline** | `fhir_pipeline/` | HAPI FHIR Public Sandbox | Extracts patients from a live FHIR API, flattens the resources, engineers features, de-identifies, validates data quality, and applies a rules-based risk score. |
 | **2. Clinical NLP Pipeline** | `clinical_nlp/` | Synthetic sample discharge summary | Turns free-text discharge summaries into structured data: diagnoses (with negation/assertion), medications, social determinants, referrals, and ML-ready features. |
 | **3. Population Health Analytics** | `population_analytics/` | Synthetic simulated population (~10k) | Simulates a patient population, risk-stratifies it, computes HEDIS quality measures, finds care gaps, and builds a care-coordinator worklist, with a Streamlit dashboard. |
 | **4. Patient Risk Stratification Dashboard** | `patient_risk_stratification_dashboard/` | UCI Diabetes 130-US Hospitals (#296) | A full ML system: trains readmission-risk models on real data, explains predictions with SHAP, audits fairness, tunes the decision threshold, and serves a role-based dashboard with AI-assisted care plans. |
@@ -27,7 +27,7 @@ projects, each a step up in complexity:
 
 ## 1. FHIR Data Pipeline
 
-**Folder:** `healthcare-ai-projects/` (`main.py` + `pipeline_functions.py`)
+**Folder:** `healthcare-ai-projects/fhir_pipeline/` (`main.py` + `pipeline_functions.py`)
 
 An ingestion pipeline against the **HAPI FHIR public sandbox** (`hapi.fhir.org`).
 It calls the FHIR API, flattens `Patient/Condition/Encounter/Observation`
@@ -38,8 +38,9 @@ production this same interface would point at an Epic/Cerner FHIR API with SMART
 on FHIR auth.
 
 - **Dataset:** HAPI FHIR Public Sandbox (`hapi.fhir.org`), live public FHIR test server.
-- **Run:** `python3 main.py`
-- **Output:** versioned `patient_features_v###.csv` (plus a `_LATEST` copy).
+- **Run:** `python3 fhir_pipeline/main.py`
+- **Output:** versioned `patient_features_v###.csv` (plus a `_LATEST` copy) in
+  `fhir_pipeline/outputs/`.
 
 ## 2. Clinical NLP Pipeline
 
@@ -116,9 +117,10 @@ rule-based fallback otherwise.
 
 ```
 healthcare-ai-projects/
-  main.py                      FHIR pipeline entry point (project 1)
-  pipeline_functions.py        FHIR extraction, de-identification, rules risk score
-  patient_features_*.csv       FHIR pipeline outputs (versioned)
+  fhir_pipeline/               FHIR data pipeline (project 1)
+    main.py                    entry point
+    pipeline_functions.py      FHIR extraction, de-identification, rules risk score
+    outputs/                   patient_features_*.csv (versioned outputs)
   clinical_nlp/                Clinical NLP pipeline (project 2)
   population_analytics/        Population health platform + dashboard (project 3)
   patient_risk_stratification_dashboard/

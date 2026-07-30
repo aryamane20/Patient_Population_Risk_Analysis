@@ -13,10 +13,15 @@ import glob
 import os
 import re
 from datetime import datetime
+from pathlib import Path
 
 import pandas as pd
 
 from pipeline_functions import run_pipeline, calculate_simple_risk_score
+
+# Outputs live in a dedicated folder next to this script so runs stay organized.
+OUTPUT_DIR = Path(__file__).resolve().parent / "outputs"
+OUTPUT_DIR.mkdir(exist_ok=True)
 
 
 def next_version_number():
@@ -25,7 +30,7 @@ def next_version_number():
     patient_features_v###.csv files and returning max + 1.
     Starts at 1 when no prior reports exist.
     """
-    existing = glob.glob("patient_features_v*.csv")
+    existing = glob.glob(str(OUTPUT_DIR / "patient_features_v*.csv"))
     versions = []
     for path in existing:
         match = re.search(r"patient_features_v(\d+)\.csv$", os.path.basename(path))
@@ -49,8 +54,8 @@ def export_dataset(df):
     """
     version = next_version_number()
     run_time = datetime.now().strftime("%Y-%m-%d %H:%M")
-    output_filename = f"patient_features_v{version:03d}.csv"
-    latest_filename = "patient_features_LATEST.csv"
+    output_filename = OUTPUT_DIR / f"patient_features_v{version:03d}.csv"
+    latest_filename = OUTPUT_DIR / "patient_features_LATEST.csv"
 
     df.to_csv(output_filename, index=False)
     df.to_csv(latest_filename, index=False)
